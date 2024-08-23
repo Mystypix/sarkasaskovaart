@@ -1,0 +1,92 @@
+---
+import Navigation from "../components/Navigation.astro";
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:wght@100;200;300;400;500;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <Navigation />
+        <slot />
+    </body>
+</html>
+<style is:global>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    :root {
+        --main-color: #D9A1AA;
+        --secondary-color: #D9A1AA;
+    }
+
+    .title {
+        font-family: "Dancing Script", cursive;
+        font-optical-sizing: auto;
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .navLinks {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 30px;
+        height: 60px;
+        background: rgba(255,255,255,.8);
+    }
+
+    .navLink {
+        margin: 0 10px;
+        padding: 0 5px;
+        line-height: 50px;
+    }
+
+    .section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+    }
+
+    .content {
+        padding: 60px 30px;
+    }
+
+    .sectionImage {
+        background-attachment: scroll;
+    }
+
+    .faqAnswer {
+        max-height: 0;
+        opacity: 0;
+    }
+</style>

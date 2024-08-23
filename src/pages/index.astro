@@ -1,0 +1,40 @@
+---
+import { client } from '../../tina/__generated__/client'
+import { TinaMarkdown } from 'tinacms/dist/rich-text'
+import Layout from "../layouts/Layout.astro";
+
+const data = await client.queries.homepage({ relativePath: 'homepage.md' })
+
+---
+
+<Layout>
+	<section class="section">
+		<div class="content">
+			<div class="introText">
+				<TinaMarkdown content={data.data.homepage.introText} />
+			</div>
+		</div>
+		<div>
+			<img src={data.data.homepage.introImage} alt="intro image" />
+		</div>
+	</section>
+	<section class="section">
+		<div class="content">
+			<div class="introText">
+				<TinaMarkdown content={data.data.homepage.aboutText} />
+			</div>
+		</div>
+	</section>
+	<section>
+		<div>
+			{data.data.homepage.faq.map((faq) => (
+				<div>
+					<h3 class="faqQuestion">{faq.question}</h3>
+					<div class="faqAnswer">
+						<TinaMarkdown content={faq.answer} />
+					</div>
+				</div>
+			))}
+		</div>
+	</section>
+</Layout>
