@@ -1,32 +1,63 @@
 ---
 import { client } from '../../tina/__generated__/client'
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
-import Layout from "../layouts/Layout.astro";
+import Layout from "../layouts/Layout.astro"
+import { Image } from 'astro:assets'
 
 const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 
 ---
 
 <Layout>
-	<section class="section">
-		<div class="content">
-			<div class="introText">
-				<TinaMarkdown content={data.data.homepage.introText} />
-			</div>
-		</div>
-		<div>
-			<img src={data.data.homepage.introImage} alt="intro image" />
+	<section class="section section--intro">
+		<div class="introText">
+			<TinaMarkdown content={data.data.homepage.introText} />
 		</div>
 	</section>
-	<section class="section">
+	<section class="section section--about">
 		<div class="content">
-			<div class="introText">
-				<TinaMarkdown content={data.data.homepage.aboutText} />
-			</div>
+			<h2 class="title">O mně</h2>
+			<TinaMarkdown content={data.data.homepage.aboutText} />
 		</div>
 	</section>
-	<section>
-		<div>
+	<section class="section section--pricing">
+		<div></div>
+		<div class="content">
+			<h2 class="title">Ceník</h2>
+			<TinaMarkdown content={data.data.homepage.pricingText} />
+		</div>
+	</section>
+	<section class="section section--tattoo">
+		<div class="content">
+			<h2 class="title">Tetování</h2>
+		</div>
+	</section>
+	<section class="section section--reservation">
+		<div class="content">
+			<h2 class="title">Rezervace</h2>
+		</div>
+	</section>
+	<section class="section section--photo">
+		<div></div>
+		<div class="content">
+			<h2 class="title">Fotografie</h2>
+			<TinaMarkdown content={data.data.homepage.photoText} />
+		</div>
+	</section>
+	<section class="section section--painting">
+		<div class="content">
+			<h2 class="title">Obrazy</h2>
+			<TinaMarkdown content={data.data.homepage.paintingText} />
+		</div>
+	</section>
+	<section class="section section--therms">
+		<div></div>
+		<div class="content">
+			<h2 class="title">Smluvní podmínky a ke stažení</h2>
+		</div>
+	</section>
+	<section class="section section--faq">
+		<div class="content">
 			{data.data.homepage.faq.map((faq) => (
 				<div>
 					<h3 class="faqQuestion">{faq.question}</h3>
@@ -38,3 +69,67 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		</div>
 	</section>
 </Layout>
+<style>
+	.section--intro {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 100vh;
+		padding-top: 60px;
+	}
+
+	.introText {
+		position: relative;
+		z-index: 1;
+		max-width: 800px;
+		font-size: 30px;
+		text-align: center;
+
+		p {
+			font-family: "Dancing Script", cursive;
+		}
+	}
+
+	.introBg {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.section--about {
+		background: url('../assets/about-bg.jpg') no-repeat right top;
+		background-attachment: fixed;
+		background-size: 50%;
+	}
+
+	.section--pricing {
+		background: url('../assets/pricing-bg.jpeg') no-repeat left center;
+		background-attachment: fixed;
+		background-size: contain;
+	}
+
+	.section--reservation {
+		background: url('../assets/reservation-bg.jpeg') no-repeat right top;
+		background-attachment: fixed;
+		background-size: contain;
+	}
+
+	.section--painting {
+		background: url('../assets/painting-bg.jpeg') no-repeat right top;
+		background-attachment: fixed;
+		background-size: contain;
+	}
+
+	.section--faq {
+		background: url('../assets/faq-bg.jpeg') no-repeat right top;
+		background-attachment: fixed;
+		background-size: 50%;
+	}
+
+	.section--tattoo {
+		display: block;
+	}
+</style>

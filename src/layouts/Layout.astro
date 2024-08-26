@@ -24,6 +24,9 @@ const { title } = Astro.props;
     <body>
         <Navigation />
         <slot />
+        <footer>
+            <p>Šářka Šašková &copy; 2024</p>
+        </footer>
     </body>
 </html>
 <style is:global>
@@ -39,11 +42,27 @@ const { title } = Astro.props;
         --secondary-color: #D9A1AA;
     }
 
+    li {
+        list-style: none;
+    }
+
+    .logo {
+        color: #010101;
+        font-size: 36px;
+        text-decoration: none;
+    }
+
+    .logo,
     .title {
         font-family: "Dancing Script", cursive;
         font-optical-sizing: auto;
         font-weight: normal;
         font-style: normal;
+    }
+
+    .title {
+        margin-bottom: 30px;
+        font-size: 36px;
     }
 
     .navLinks {
@@ -57,6 +76,7 @@ const { title } = Astro.props;
         top: 0;
         left: 0;
         right: 0;
+        z-index: 2;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -72,17 +92,26 @@ const { title } = Astro.props;
     }
 
     .section {
+        position: relative;
+        z-index: 1;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 50% 50%;
+        width: 100%;
         min-height: 100vh;
     }
 
     .content {
         padding: 60px 30px;
+        background: #fff;
     }
 
-    .sectionImage {
-        background-attachment: scroll;
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        background: var(--main-color);
+        color: #fff;
     }
 
     .faqAnswer {
