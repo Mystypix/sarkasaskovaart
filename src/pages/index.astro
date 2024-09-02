@@ -14,37 +14,37 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			<TinaMarkdown content={data.data.homepage.introText} />
 		</div>
 	</section>
-	<section class="section section--about">
+	<section id="aboutMe" class="section section--about">
 		<div class="content">
 			<h2 class="title">O mně</h2>
 			<TinaMarkdown content={data.data.homepage.aboutText} />
 		</div>
 	</section>
-	<section class="section section--pricing">
+	<section id="pricing" class="section section--pricing">
 		<div></div>
 		<div class="content">
 			<h2 class="title">Ceník</h2>
 			<TinaMarkdown content={data.data.homepage.pricingText} />
 		</div>
 	</section>
-	<section class="section section--tattoo">
+	<section id="tattoo" class="section section--tattoo">
 		<div class="content">
 			<h2 class="title">Tetování</h2>
 		</div>
 	</section>
-	<section class="section section--reservation">
+	<section id="reservation" class="section section--reservation">
 		<div class="content">
 			<h2 class="title">Rezervace</h2>
 		</div>
 	</section>
-	<section class="section section--photo">
+	<section id="photography" class="section section--photo">
 		<div></div>
 		<div class="content">
 			<h2 class="title">Fotografie</h2>
 			<TinaMarkdown content={data.data.homepage.photoText} />
 		</div>
 	</section>
-	<section class="section section--painting">
+	<section id="painting" class="section section--painting">
 		<div class="content">
 			<h2 class="title">Obrazy</h2>
 			<TinaMarkdown content={data.data.homepage.paintingText} />
@@ -54,12 +54,20 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		<div></div>
 		<div class="content">
 			<h2 class="title">Smluvní podmínky a ke stažení</h2>
+			<div>
+				<a href="http://localhost:4321/smluvni_podminky.pdf">Smluvní podmínky</a>
+				<a href="http://localhost:4321/obchodni_podminky_inkhouse.pdf">Obchodní podmínky</a>
+				<a href="http://localhost:4321/formular_pro_nezletile.pdf">Formulář pro nezletilé</a>
+				<a href="http://localhost:4321/cestne_prohlaseni_k_vytvoreni_tetovani.pdf">Čestné prohlášení k vytvoření tetování</a>
+				<a href="http://localhost:4321/reklamacni_rad.pdf">Reklamační řád</a>
+			</div>
 		</div>
 	</section>
 	<section class="section section--faq">
 		<div class="content">
+			<h2 class="title">FAQ</h2>
 			{data.data.homepage.faq.map((faq) => (
-				<div>
+				<div class="faqItem">
 					<h3 class="faqQuestion">{faq.question}</h3>
 					<div class="faqAnswer">
 						<TinaMarkdown content={faq.answer} />
@@ -76,6 +84,9 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		justify-content: center;
 		min-height: 100vh;
 		padding-top: 60px;
+		//background: url('../assets/intro-bg.jpeg') no-repeat center center;
+		background-attachment: fixed;
+		background-size: cover;
 	}
 
 	.introText {
@@ -123,6 +134,25 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		background-size: contain;
 	}
 
+	.section--photo {
+		background: url('../assets/photo-bg.jpeg') no-repeat left top;
+		background-attachment: fixed;
+		background-size: 50%;
+	}
+
+	.section--therms {
+		background: url('../assets/therms-bg.jpeg') no-repeat left center;
+		background-attachment: fixed;
+		background-size: 50%;
+	}
+
+	.section--faq {
+		background: url('../assets/faq-bg.jpeg') no-repeat right top;
+		background-attachment: fixed;
+		background-size: 50%;
+	}
+
+
 	.section--faq {
 		background: url('../assets/faq-bg.jpeg') no-repeat right top;
 		background-attachment: fixed;
@@ -131,5 +161,30 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 
 	.section--tattoo {
 		display: block;
+	}
+
+	.faqQuestion {
+		border: 1px solid var(--secondary-color);
+		padding: 10px 20px;
+		font-size: 16px;
+		font-weight: 400;
+		transition: background-color .3s;
+
+		&:hover {
+			background-color: var(--secondary-color);
+			color: white;
+		}
+	}
+
+	.faqItem {
+		+ .faqItem {
+			margin-top: -1px;
+		}
+	}
+
+	.faqAnswer {
+		max-height: 0;
+		opacity: 0;
+		pointer-events: none;
 	}
 </style>

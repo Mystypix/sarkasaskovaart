@@ -1,12 +1,45 @@
 <nav class="nav">
     <a class="logo" href="./">Šářka Šašková Art</a>
     <div class="navLinks">
-        <a class="navLink">O mně</a>
-        <a class="navLink">Ceník</a>
-        <a class="navLink">Tetování</a>
-        <a class="navLink">Rezervace</a>
-        <a class="navLink">Fotografování</a>
-        <a class="navLink">Obrazy</a>
-        <a class="navLink">Více</a>
+        <a class="navLink" href="#aboutMe">O mně</a>
+        <a class="navLink" href="#pricing">Ceník</a>
+        <a class="navLink" href="#tattoos">Tetování</a>
+        <a class="navLink" href="#reservation">Rezervace</a>
+        <a class="navLink" href="#photography">Fotografování</a>
+        <a class="navLink" href="#painting">Obrazy</a>
+        <div class="navLink">Více</div>
     </div>
 </nav>
+<style>
+    .navLink {
+        position: relative;
+        margin: 0 8px;
+        padding: 0 5px;
+        line-height: 40px;
+        color: var(--text-color);
+        text-decoration: none;
+        transition: color .3s;
+        overflow: hidden;
+
+        &.active,
+        &:hover {
+            color: var(--main-color);
+
+            &::before {
+                transform: translateX(0);
+            }
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--main-color);
+            transform: translateX(-100%);
+            transition: transform .3s;
+        }
+    }
+</style>

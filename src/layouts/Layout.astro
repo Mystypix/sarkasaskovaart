@@ -38,8 +38,9 @@ const { title } = Astro.props;
     }
 
     :root {
+        --text-color: #1c3a39;
         --main-color: #D9A1AA;
-        --secondary-color: #D9A1AA;
+        --secondary-color: #33f1cb;
     }
 
     li {
@@ -85,12 +86,6 @@ const { title } = Astro.props;
         background: rgba(255,255,255,.8);
     }
 
-    .navLink {
-        margin: 0 10px;
-        padding: 0 5px;
-        line-height: 50px;
-    }
-
     .section {
         position: relative;
         z-index: 1;
@@ -112,10 +107,5 @@ const { title } = Astro.props;
         height: 60px;
         background: var(--main-color);
         color: #fff;
-    }
-
-    .faqAnswer {
-        max-height: 0;
-        opacity: 0;
     }
 </style>
