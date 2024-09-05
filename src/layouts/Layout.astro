@@ -43,6 +43,10 @@ const { title } = Astro.props;
         --secondary-color: #33f1cb;
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     li {
         list-style: none;
     }
@@ -66,26 +70,6 @@ const { title } = Astro.props;
         font-size: 36px;
     }
 
-    .navLinks {
-        display: flex;
-        align-items: center;
-        height: 100%;
-    }
-
-    .nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 30px;
-        height: 60px;
-        background: rgba(255,255,255,.8);
-    }
-
     .section {
         position: relative;
         z-index: 1;
@@ -107,5 +91,18 @@ const { title } = Astro.props;
         height: 60px;
         background: var(--main-color);
         color: #fff;
+    }
+
+    @media screen and (max-width: 980px) {
+        .section {
+            grid-template-columns: 100%;
+            min-height: unset;
+        }
+
+        .title {
+            font-size: 30px;
+            text-align: center;
+        }
+        
     }
 </style>

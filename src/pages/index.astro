@@ -3,6 +3,7 @@ import { client } from '../../tina/__generated__/client'
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
 import Layout from "../layouts/Layout.astro"
 import { Image } from 'astro:assets'
+import FileLink from '../components/FileLink.astro'
 
 const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 
@@ -19,13 +20,15 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			<h2 class="title">O mně</h2>
 			<TinaMarkdown content={data.data.homepage.aboutText} />
 		</div>
+		<div class="mobileDummy"></div>
 	</section>
 	<section id="pricing" class="section section--pricing">
-		<div></div>
+		<div class="dummy"></div>
 		<div class="content">
 			<h2 class="title">Ceník</h2>
 			<TinaMarkdown content={data.data.homepage.pricingText} />
 		</div>
+		<div class="mobileDummy"></div>
 	</section>
 	<section id="tattoo" class="section section--tattoo">
 		<div class="content">
@@ -33,37 +36,42 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		</div>
 	</section>
 	<section id="reservation" class="section section--reservation">
+		<div class="mobileDummy"></div>
 		<div class="content">
 			<h2 class="title">Rezervace</h2>
 		</div>
 	</section>
 	<section id="photography" class="section section--photo">
-		<div></div>
+		<div class="mobileDummy"></div>
+		<div class="dummy"></div>
 		<div class="content">
 			<h2 class="title">Fotografie</h2>
 			<TinaMarkdown content={data.data.homepage.photoText} />
 		</div>
 	</section>
 	<section id="painting" class="section section--painting">
+		<div class="mobileDummy"></div>
 		<div class="content">
 			<h2 class="title">Obrazy</h2>
 			<TinaMarkdown content={data.data.homepage.paintingText} />
 		</div>
 	</section>
 	<section class="section section--therms">
-		<div></div>
+		<div class="mobileDummy"></div>
+		<div class="dummy"></div>
 		<div class="content">
 			<h2 class="title">Smluvní podmínky a ke stažení</h2>
-			<div>
-				<a href="http://localhost:4321/smluvni_podminky.pdf">Smluvní podmínky</a>
-				<a href="http://localhost:4321/obchodni_podminky_inkhouse.pdf">Obchodní podmínky</a>
-				<a href="http://localhost:4321/formular_pro_nezletile.pdf">Formulář pro nezletilé</a>
-				<a href="http://localhost:4321/cestne_prohlaseni_k_vytvoreni_tetovani.pdf">Čestné prohlášení k vytvoření tetování</a>
-				<a href="http://localhost:4321/reklamacni_rad.pdf">Reklamační řád</a>
+			<div class="fileLinks">
+				<FileLink href="http://localhost:4321/smluvni_podminky.pdf" text="Smluvní podmínky" />
+				<FileLink href="http://localhost:4321/obchodni_podminky_inkhouse.pdf" text="Obchodní podmínky" />
+				<FileLink href="http://localhost:4321/formular_pro_nezletile.pdf" text="Formulář pro nezletilé" />
+				<FileLink href="http://localhost:4321/cestne_prohlaseni_k_vytvoreni_tetovani.pdf" text="Čestné prohlášení k vytvoření tetování" />
+				<FileLink href="http://localhost:4321/reklamacni_rad.pdf" text="Reklamační řád" />
 			</div>
 		</div>
 	</section>
 	<section class="section section--faq">
+		<div class="mobileDummy"></div>
 		<div class="content">
 			<h2 class="title">FAQ</h2>
 			{data.data.homepage.faq.map((faq) => (
@@ -84,7 +92,7 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		justify-content: center;
 		min-height: 100vh;
 		padding-top: 60px;
-		//background: url('../assets/intro-bg.jpeg') no-repeat center center;
+		background: url('../assets/intro-bg.jpg') no-repeat center center;
 		background-attachment: fixed;
 		background-size: cover;
 	}
@@ -93,8 +101,10 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		position: relative;
 		z-index: 1;
 		max-width: 800px;
+		padding: 0 20px;
 		font-size: 30px;
 		text-align: center;
+		text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 
 		p {
 			font-family: "Dancing Script", cursive;
@@ -163,16 +173,45 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		display: block;
 	}
 
+	.mobileDummy {
+		display: none;
+	}
+
+	.fileLinks {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+
 	.faqQuestion {
-		border: 1px solid var(--secondary-color);
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		border: 1px solid var(--main-color);
 		padding: 10px 20px;
 		font-size: 16px;
 		font-weight: 400;
 		transition: background-color .3s;
+		cursor: pointer;
 
 		&:hover {
-			background-color: var(--secondary-color);
+			background-color: var(--main-color);
 			color: white;
+
+			&::before {
+				border-color: white transparent transparent transparent;
+			}
+		}
+
+		&::before {
+			content: '';
+			width: 0px;
+			height: 0px;
+			border-style: solid;
+			border-width: 14px 8px 0 8px;
+			border-color: var(--main-color) transparent transparent transparent;
+			transform: rotate(270deg);
+			transition: border-color .3s, transform .3s;
 		}
 	}
 
@@ -180,11 +219,69 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		+ .faqItem {
 			margin-top: -1px;
 		}
+
+		&.open {
+			.faqQuestion {
+				background-color: var(--main-color);
+				color: white;
+
+				&::before {
+					border-color: white transparent transparent transparent;
+					transform: rotate(0);
+				}
+			}
+
+			.faqAnswer {
+				max-height: 1000px; /* Adjust as needed */
+				opacity: 1;
+				pointer-events: auto;
+			}
+		}
 	}
 
 	.faqAnswer {
 		max-height: 0;
 		opacity: 0;
-		pointer-events: none;
+		overflow: hidden;
+		transition: max-height 0.3s ease, opacity 0.3s ease;
+	}
+
+	@media screen and (max-width: 980px) {
+		.mobileDummy {
+			display: block;
+			height: 50vh;
+		}
+
+		.dummy {
+			display: none;
+		}
+
+		.section--about,
+		.section--pricing,
+		.section--reservation,
+		.section--painting,
+		.section--photo,
+		.section--therms,
+		.section--faq {
+			background-size: 100%;
+		}
+
+		.fileLinks {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 20px;
+		}
 	}
 </style>
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const faqQuestions = document.querySelectorAll('.faqQuestion');
+
+		faqQuestions.forEach(question => {
+			question.addEventListener('click', () => {
+				const faqItem = question.closest('.faqItem');
+				faqItem.classList.toggle('open');
+			});
+		});
+	});
+</script>
