@@ -2,14 +2,13 @@
 import { client } from '../../tina/__generated__/client'
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
 import Layout from "../layouts/Layout.astro"
-import { Image } from 'astro:assets'
 import FileLink from '../components/FileLink.astro'
 
 const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 
 ---
 
-<Layout>
+<Layout title="Šářka SVK">
 	<section class="section section--intro">
 		<div class="introText">
 			<TinaMarkdown content={data.data.homepage.introText} />
