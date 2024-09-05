@@ -38,6 +38,8 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		<div class="mobileDummy"></div>
 		<div class="content">
 			<h2 class="title">Rezervace</h2>
+			<TinaMarkdown content={data.data.homepage.reservationText} />
+			<a class="button" href="https://sarkassvk.setmore.com/jakub">Rezervovat</a>
 		</div>
 	</section>
 	<section id="photography" class="section section--photo">
@@ -243,6 +245,23 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		opacity: 0;
 		overflow: hidden;
 		transition: max-height 0.3s ease, opacity 0.3s ease;
+	}
+
+	.button {
+		margin-top: 20px;
+		display: inline-block;
+		border: 1px solid var(--main-color);
+		border-radius: 3px;
+		padding: 0 20px;
+		color: var(--main-color);
+		line-height: 40px;
+		transition: background-color .3s, color .3s;
+		text-decoration: none;
+
+		&:hover {
+			background-color: var(--main-color);
+			color: white;
+		}
 	}
 
 	@media screen and (max-width: 980px) {

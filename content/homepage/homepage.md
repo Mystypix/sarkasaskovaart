@@ -8,6 +8,8 @@ aboutText: >
   prošla školami zaměřenými na výtvarné umění, grafický design, malování. Měla
   bych být grafický designér, ale tetování od toho není daleko!
 
+
+
   Na tetování se mi líbí to, že umí vykouzlit úsměv budoucímu majiteli. Ať už se
   jedná o první tetování či překrytí staršího, tak celkový dojem tvoří atmosféra
   a osobní přístup ke každému z Vás. Neboj se mě oslovit se svým nápadem, ráda
@@ -15,6 +17,8 @@ aboutText: >
 
   Tetováním se zabývám od roku 2019. Studio Ink House jsem založila v roce 2021,
   kde tetují i další umělci.
+
+
 
   A co vlastně tetuji? Popravdě? Mám ráda výzvy! Můj oblíbený styl tetování je
   abstrakce a freehand kombinovaný s reálnými prvky, popřípadě barevným
@@ -25,14 +29,33 @@ aboutText: >
   focení, rodinné focení, narozeninové focení dětí, novorozenecké focení,
   svatební focení.
 
+
+
   Takže pokud se ti líbí fotografie z portfolia, vyplň rezervaci a uvidíme se!
 
   Na stránkách najdeš i obrazy! Obrazy jsou krásným moderním doplňkem Vašeho
   domova. Se svým synem rádi tvoříme obrazy, které se hodí, do každé místnosti!
   Stačí si vybrat barvu.
 
+
+
   Mohu pro Vás uspořádat rodinný workshop, kde si odnesete vlastní obraz,
   vytvořený členy rodiny.
+reservationText: >
+  Rezervuj si svůj termín pomocí systému níže. Je to jediný způsob, jak se ke
+  mně objednat. Odepíšu ti hned, jak to bude možné a domluvíme se na detailech.
+
+
+
+  Pro potvrzení termínu a vytvoření návrhu prosím o zaslání rezervace ve výši
+  500-1500 Kč dle náročnosti motivu. Danou výši upřesním dle popisu z formuláře.
+
+
+
+  Rezervace není součástí ceny tetování. Slouží ke konzultaci nad vytvořeným
+  návrhem či jeho tvorbou a je nevratná. Motiv, který ti bude vytvořen je
+  originální a použitý pouze pro tvé tetování. Po odsouhlasení motivu je vlastně
+  uzavřena smlouva o dílo a design je jen tvůj.
 pricingText: >
   Cena tetování začíná na 2000 Kč. Tato minimální cena platí i u drobného
   tetování a je v ní zahrnut veškerý jednorázový materiál použitý během i po
@@ -46,10 +69,25 @@ pricingText: >
   * Střední tetování 3500Kč - 6500Kč
 
   * Větší tetování 6500Kč a více
-    Je těžké sestavit univerzální ceník tetování, který by zde byl k nahlédnutí, protože každé tetování je odlišné designem, velikostí a v neposlední řadě jeho náročností. Proto ti cena tetování bude sdělena na konzultaci poté, co si společně upřesníme, jaká je tvá představa.
-    V ceně tetování je zahrnuta jedna korekce, která se nevztahuje na místa, na která byl klient upozorněn, že se jich korekce netýká a to z důvodu častého obnovování kůže a tím pádem vypadávání tetovací barvy (týká se rukou od zápěstí - prsty, dlaň, bok ruky, hřbet ruky a chodidel, uši). Korekci tetování může klient využít do 3 měsíců od jeho provedení. Tetování je možné opravit nejdříve za měsíc po jeho provedení, kdy je již kůže zcela zahojená.
+
+
+  Je těžké sestavit univerzální ceník tetování, který by zde byl k nahlédnutí,
+  protože každé tetování je odlišné designem, velikostí a v neposlední řadě jeho
+  náročností. Proto ti cena tetování bude sdělena na konzultaci poté, co si
+  společně upřesníme, jaká je tvá představa.
+
+
+
+  V ceně tetování je zahrnuta jedna korekce, která se nevztahuje na místa, na
+  která byl klient upozorněn, že se jich korekce netýká a to z důvodu častého
+  obnovování kůže a tím pádem vypadávání tetovací barvy (týká se rukou od
+  zápěstí - prsty, dlaň, bok ruky, hřbet ruky a chodidel, uši). Korekci tetování
+  může klient využít do 3 měsíců od jeho provedení. Tetování je možné opravit
+  nejdříve za měsíc po jeho provedení, kdy je již kůže zcela zahojená.
 photoText: >
   Momentálně hledám modely a modelky na focení. Portrét, svatba, rodinné focení.
+
+
 
   Budu moc ráda, když napíšete a domluvíme se individuálně, cena je
   individuální, protože sbírám zkušenosti do portfolia.
