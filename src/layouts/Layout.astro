@@ -34,11 +34,20 @@ const { title } = Astro.props;
     </body>
 </html>
 <style is:global>
+    @font-face {
+        font-family: 'eina01-regularuploaded_file';
+        src: url('/eina01-regular-webfont.woff2') format('woff2'),
+        url('/eina01-regular-webfont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+
+    }
+
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
+        font-family: "eina01-regularuploaded_file", sans-serif;
     }
 
     :root {
