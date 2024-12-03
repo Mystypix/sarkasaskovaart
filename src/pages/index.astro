@@ -40,7 +40,9 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		<div class="content">
 			<h2 class="title">Rezervace</h2>
 			<TinaMarkdown content={data.data.homepage.reservationText} />
-			<a class="button" href="https://www.onlinetermin.cz/customer?ownerId=628&entityId=738">Rezervovat</a>
+			<div class="reservationButtonWrapper">
+				<a class="button button--reservation" href="https://www.onlinetermin.cz/customer?ownerId=628&entityId=738">Rezervovat</a>
+			</div>
 		</div>
 	</section>
 	<section id="photography" class="section section--photo">
@@ -154,14 +156,7 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 	}
 
 	.section--faq {
-		background: url('../assets/faq-bg.jpeg') no-repeat right top;
-		background-attachment: fixed;
-		background-size: 50%;
-	}
-
-
-	.section--faq {
-		background: url('../assets/faq-bg.jpeg') no-repeat right top;
+		background: url('../assets/faq-bg.jpg') no-repeat right center;
 		background-attachment: fixed;
 		background-size: 50%;
 	}
@@ -258,6 +253,12 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			background-color: var(--main-color);
 			color: white;
 		}
+	}
+
+	.button--reservation {
+		font-weight: bold;
+		line-height: 56px;
+		border: 2px solid var(--main-color);
 	}
 
 	@media screen and (max-width: 980px) {
