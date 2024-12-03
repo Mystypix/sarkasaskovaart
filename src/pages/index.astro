@@ -3,9 +3,11 @@ import { client } from '../../tina/__generated__/client'
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
 import Layout from "../layouts/Layout.astro"
 import FileLink from '../components/FileLink.astro'
+import { getPosts } from '../api.js';
 
+const posts = await getPosts(Astro.request);
+const postImages = posts.data.map(post => post.media_url).filter(post => !post.includes('video'));
 const data = await client.queries.homepage({ relativePath: 'homepage.md' })
-
 ---
 
 <Layout title="Šářka - Tetování Praha">
@@ -32,7 +34,11 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 	<section id="tattoo" class="section section--tattoo">
 		<div class="content">
 			<h2 class="title">Tetování</h2>
-			<div id="instagram-feed"></div>
+			<div class="tattooGallery">
+				{postImages.map((src) => (
+					<img class="tattooImage" src={src} alt="Tetování" />
+				))}
+			</div>
 		</div>
 	</section>
 	<section id="reservation" class="section section--reservation">
@@ -60,7 +66,7 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			<TinaMarkdown content={data.data.homepage.paintingText} />
 		</div>
 	</section>
-	<section class="section section--therms">
+	<section id="therms" class="section section--therms">
 		<div class="mobileDummy"></div>
 		<div class="dummy"></div>
 		<div class="content">
@@ -74,7 +80,7 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			</div>
 		</div>
 	</section>
-	<section class="section section--faq">
+	<section id="faq" class="section section--faq">
 		<div class="mobileDummy"></div>
 		<div class="content">
 			<h2 class="title">FAQ</h2>
@@ -106,8 +112,11 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		z-index: 1;
 		max-width: 800px;
 		padding: 0 20px;
-		font-size: 30px;
-		text-align: center;
+
+		* {
+			font-size: 30px;
+			text-align: center;
+		}
 	}
 
 	.introBg {
@@ -121,48 +130,70 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 
 	.section--about {
 		background: url('../assets/about-bg.jpg') no-repeat right top;
-		//background-attachment: fixed;
 		background-size: 50%;
 	}
 
 	.section--pricing {
 		background: url('../assets/pricing-bg.jpeg') no-repeat left center;
-		background-attachment: fixed;
 		background-size: contain;
 	}
 
 	.section--reservation {
 		background: url('../assets/reservation-bg.jpeg') no-repeat right top;
-		background-attachment: fixed;
 		background-size: contain;
 	}
 
 	.section--painting {
 		background: url('../assets/painting-bg.jpeg') no-repeat right top;
-		background-attachment: fixed;
 		background-size: contain;
 	}
 
 	.section--photo {
 		background: url('../assets/photo-bg.jpeg') no-repeat left top;
-		background-attachment: fixed;
 		background-size: 50%;
 	}
 
 	.section--therms {
 		background: url('../assets/therms-bg.jpeg') no-repeat left center;
-		background-attachment: fixed;
 		background-size: 50%;
 	}
 
 	.section--faq {
 		background: url('../assets/faq-bg.jpg') no-repeat right center;
-		background-attachment: fixed;
 		background-size: 50%;
 	}
 
 	.section--tattoo {
 		display: block;
+
+		.content {
+			padding-bottom: 0;
+		}
+	}
+
+	.content {
+		ul {
+			margin: 10px 0;
+		}
+	}
+
+	.tattooGallery {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		margin: 0 -30px;
+	}
+
+	.tattooImage {
+		display: block;
+		width: 100%;
+		height: 300px;
+		object-fit: cover;
+	}
+
+	.reservationButtonWrapper {
+		display: flex;
+		justify-content: center;
+		margin-top: 30px;
 	}
 
 	.mobileDummy {
@@ -197,8 +228,8 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 
 		&::before {
 			content: '';
-			width: 0px;
-			height: 0px;
+			width: 0;
+			height: 0;
 			border-style: solid;
 			border-width: 14px 8px 0 8px;
 			border-color: var(--main-color) transparent transparent transparent;
@@ -227,6 +258,8 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 				max-height: 1000px; /* Adjust as needed */
 				opacity: 1;
 				pointer-events: auto;
+				border: 1px solid var(--main-color);
+				padding: 10px 20px;
 			}
 		}
 	}
@@ -235,7 +268,7 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		max-height: 0;
 		opacity: 0;
 		overflow: hidden;
-		transition: max-height 0.3s ease, opacity 0.3s ease;
+		transition: max-height 0.3s linear, opacity 0.3s linear;
 	}
 
 	.button {
@@ -259,6 +292,13 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		font-weight: bold;
 		line-height: 56px;
 		border: 2px solid var(--main-color);
+		background-color: var(--main-color);
+		color: white;
+
+		&:hover {
+			background-color: white;
+			color: var(--main-color);
+		}
 	}
 
 	@media screen and (max-width: 980px) {
@@ -299,23 +339,4 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			});
 		});
 	});
-
-	const accessToken = '';
-	const userId = '';
-		fetch(`https://graph.instagram.com/${userId}/media?fields=id,caption,media_url,permalink&access_token=${accessToken}`)
-		.then(response => response.json())
-		.then(data => {
-			const feed = document.getElementById('instagram-feed');
-			data.data.forEach(post => {
-				const postElement = document.createElement('div');
-				postElement.innerHTML = `
-                        <a href="${post.permalink}" target="_blank">
-                            <img src="${post.media_url}" alt="${post.caption}">
-                        </a>
-                    `;
-				feed.appendChild(postElement);
-			});
-		})
-		.catch(error => console.error('Error fetching Instagram posts:', error));
-
 </script>
