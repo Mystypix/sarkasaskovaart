@@ -16,14 +16,16 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			<TinaMarkdown content={data.data.homepage.introText} />
 		</div>
 	</section>
-	<section id="aboutMe" class="section section--about">
+	<div id="aboutMe" class="sectionAnchor"></div>
+	<section class="section section--about">
 		<div class="content">
 			<h2 class="title">O mně</h2>
 			<TinaMarkdown content={data.data.homepage.aboutText} />
 		</div>
 		<div class="mobileDummy"></div>
 	</section>
-	<section id="pricing" class="section section--pricing">
+	<div id="pricing" class="sectionAnchor"></div>
+	<section class="section section--pricing">
 		<div class="dummy"></div>
 		<div class="content">
 			<h2 class="title">Ceník</h2>
@@ -31,7 +33,8 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		</div>
 		<div class="mobileDummy"></div>
 	</section>
-	<section id="tattoo" class="section section--tattoo">
+	<div id="tattoo" class="sectionAnchor"></div>
+	<section class="section section--tattoo">
 		<div class="content">
 			<h2 class="title">Tetování</h2>
 			<div class="tattooGallery">
@@ -41,7 +44,8 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			</div>
 		</div>
 	</section>
-	<section id="reservation" class="section section--reservation">
+	<div id="reservation" class="sectionAnchor"></div>
+	<section class="section section--reservation">
 		<div class="mobileDummy"></div>
 		<div class="content">
 			<h2 class="title">Rezervace</h2>
@@ -51,7 +55,8 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			</div>
 		</div>
 	</section>
-	<section id="photography" class="section section--photo">
+	<div id="photography" class="sectionAnchor"></div>
+	<section class="section section--photo">
 		<div class="mobileDummy"></div>
 		<div class="dummy"></div>
 		<div class="content">
@@ -59,14 +64,16 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			<TinaMarkdown content={data.data.homepage.photoText} />
 		</div>
 	</section>
-	<section id="painting" class="section section--painting">
+	<div id="painting" class="sectionAnchor"></div>
+	<section class="section section--painting">
 		<div class="mobileDummy"></div>
 		<div class="content">
 			<h2 class="title">Obrazy</h2>
 			<TinaMarkdown content={data.data.homepage.paintingText} />
 		</div>
 	</section>
-	<section id="therms" class="section section--therms">
+	<div id="therms" class="sectionAnchor"></div>
+	<section class="section section--therms">
 		<div class="mobileDummy"></div>
 		<div class="dummy"></div>
 		<div class="content">
@@ -80,7 +87,8 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			</div>
 		</div>
 	</section>
-	<section id="faq" class="section section--faq">
+	<div id="faq" class="sectionAnchor"></div>
+	<section class="section section--faq">
 		<div class="mobileDummy"></div>
 		<div class="content">
 			<h2 class="title">FAQ</h2>
@@ -126,6 +134,11 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+	}
+
+	.sectionAnchor {
+		position: relative;
+		top: -60px;
 	}
 
 	.section--about {
