@@ -317,9 +317,25 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 	}
 
 	@media screen and (max-width: 980px) {
+		.introText {
+			* {
+				font-size: 24px;
+			}
+		}
+
+		.section--about {
+			background: url('../assets/about-bg.jpg') no-repeat center bottom;
+			background-size: 100%;
+		}
+
+		.section--pricing {
+			background: url('../assets/pricing-bg.jpeg') no-repeat center bottom;
+			background-size: auto 100%;
+		}
+
 		.mobileDummy {
 			display: block;
-			height: 50vh;
+			height: 30vh;
 		}
 
 		.dummy {
