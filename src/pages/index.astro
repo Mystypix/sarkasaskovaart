@@ -6,7 +6,7 @@ import FileLink from '../components/FileLink.astro'
 import { getPosts } from '../api.js';
 
 const posts = await getPosts(Astro.request);
-const postImages = posts.data.map(post => post.media_url).filter(post => !post.includes('video'));
+const postImages = posts.data.map(post => post.media_url).filter(post => !post.includes('video')).slice(0, 12);
 const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 ---
 
@@ -39,7 +39,9 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			<h2 class="title">Tetování</h2>
 			<div class="tattooGallery">
 				{postImages.map((src) => (
-					<img class="tattooImage" src={src} alt="Tetování" />
+					<a class="glightbox" href={src}>
+						<img class="tattooImage" src={src} alt="Tetování" />
+					</a>
 				))}
 			</div>
 		</div>
@@ -111,7 +113,7 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		min-height: 100vh;
 		padding-top: 60px;
 		background: url('../assets/intro-bg.jpg') no-repeat center center;
-		background-attachment: fixed;
+		background-attachment: scroll;
 		background-size: cover;
 	}
 
@@ -143,7 +145,7 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 
 	.section--about {
 		background: url('../assets/about-bg.jpg') no-repeat right top;
-		background-size: 50%;
+		background-size: contain;
 	}
 
 	.section--pricing {
@@ -341,7 +343,13 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		}
 	}
 </style>
-<script>
+<script client:only type="module">
+	import 'https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js';
+
+	GLightbox({
+		zoomable: false,
+	})
+
 	document.addEventListener('DOMContentLoaded', () => {
 		const faqQuestions = document.querySelectorAll('.faqQuestion');
 
