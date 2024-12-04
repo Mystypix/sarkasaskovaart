@@ -1,7 +1,7 @@
 <nav class="nav">
     <a class="logo" href="./"><img alt="Logo" class="logoImg" src="/logo.png" /></a>
     <div class="toggleMenu">
-        <input type="checkbox" />
+        <input id="hamburgerInput" type="checkbox" />
         <div class="hamburger"></div>
         <div class="navLinks">
             <a class="navLink" href="#aboutMe">O mně</a>
@@ -93,7 +93,7 @@
 
     @media screen and (max-width: 980px) {
         .nav {
-            padding: 10px 20px;
+            padding: 5px 20px;
         }
 
         .logo {
@@ -105,7 +105,7 @@
             position: relative;
             z-index: 3;
             width: 33px;
-            height: 21px;
+            height: 23px;
             -webkit-user-select: none;
             user-select: none;
         }
@@ -241,5 +241,17 @@
         }
 
         window.addEventListener('scroll', onScroll);
+
+        function setHamburgerChecked() {
+            if (window.innerWidth < 980) {
+                const hamburgerInput = document.getElementById('hamburgerInput');
+                if (hamburgerInput) {
+                    (hamburgerInput as HTMLInputElement).checked = false;                }
+            }
+        }
+
+        navItems.forEach(item => {
+            item.addEventListener('click', setHamburgerChecked);
+        });
     });
 </script>
