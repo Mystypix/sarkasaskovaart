@@ -75,7 +75,11 @@ export default defineConfig({
             type: "object",
             list: true,
             ui: {
-              component: "group-list",
+              component: 'group-list',
+              itemProps: (item) => {
+                // Field values are accessed by item?.<Field name>
+                return { label: item?.question };
+              },
             },
             fields: [
               {
