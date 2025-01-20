@@ -11,7 +11,8 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 ---
 
 <Layout title="Šárka - Tetování Praha">
-	<section class="section section--intro">
+	<section class="section section--intro"></section>
+	<section class="intro">
 		<div class="introText">
 			<TinaMarkdown content={data.data.homepage.introText} />
 		</div>
@@ -116,21 +117,26 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 </Layout>
 <style>
 	.section--intro {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		position: fixed;
+		top: 0;
+		left: 0;
 		min-height: 100vh;
-		padding-top: 60px;
 		background: url('../assets/intro-bg.jpg') no-repeat center center;
 		background-attachment: scroll;
 		background-size: cover;
 	}
 
-	.introText {
+	.intro {
 		position: relative;
 		z-index: 1;
+		background: linear-gradient(180deg, rgba(255,255,255,0), rgb(255,255,255));
+	}
+
+	.introText {
+		margin: 100vh auto 0;
 		max-width: 800px;
-		padding: 0 20px;
+		padding: 140px 20px 40px;
+		text-align: center;
 
 		* {
 			font-size: 30px;
