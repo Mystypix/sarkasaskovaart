@@ -5,7 +5,7 @@ const branch =
   process.env.GITHUB_BRANCH ||
   process.env.VERCEL_GIT_COMMIT_REF ||
   process.env.HEAD ||
-  "main";
+  "master";
 
 export default defineConfig({
   branch,
@@ -75,7 +75,7 @@ export default defineConfig({
             type: "object",
             list: true,
             ui: {
-              component: 'group-list',
+              component: "group-list",
               itemProps: (item) => {
                 // Field values are accessed by item?.<Field name>
                 return { label: item?.question };
