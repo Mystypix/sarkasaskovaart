@@ -6,6 +6,7 @@ import FileLink from '../components/FileLink.astro'
 import { getPosts } from '../api.js';
 
 const posts = await getPosts(Astro.request);
+console.log('pice', posts)
 const postImages = posts.data?.map(post => post.media_url).filter(post => !post.includes('video')).slice(0, 12);
 const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 ---
