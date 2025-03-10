@@ -9,7 +9,6 @@ aboutText: >
   bych být grafický designér, ale tetování od toho není daleko!
 
 
-
   Na tetování se mi líbí to, že umí vykouzlit úsměv budoucímu majiteli. Ať už se
   jedná o první tetování či překrytí staršího, tak celkový dojem tvoří atmosféra
   a osobní přístup ke každému z Vás. Neboj se mě oslovit se svým nápadem, ráda
@@ -17,7 +16,6 @@ aboutText: >
 
   Tetováním se zabývám od roku 2019. Studio Ink House jsem založila v roce 2021,
   kde tetují i další umělci.
-
 
 
   A co vlastně tetuji? Popravdě? Mám ráda výzvy! Můj oblíbený styl tetování je
@@ -30,13 +28,11 @@ aboutText: >
   svatební focení.
 
 
-
   Takže pokud se ti líbí fotografie z portfolia, vyplň rezervaci a uvidíme se!
 
   Na stránkách najdeš i obrazy! Obrazy jsou krásným moderním doplňkem Vašeho
   domova. Se svým synem rádi tvoříme obrazy, které se hodí, do každé místnosti!
   Stačí si vybrat barvu.
-
 
 
   Mohu pro Vás uspořádat rodinný workshop, kde si odnesete vlastní obraz,
@@ -46,10 +42,8 @@ reservationText: >
   mně objednat. Odepíšu ti hned, jak to bude možné a domluvíme se na detailech.
 
 
-
   Pro potvrzení termínu a vytvoření návrhu prosím o zaslání rezervace ve výši
   500-1500 Kč dle náročnosti motivu. Danou výši upřesním dle popisu z formuláře.
-
 
 
   Rezervace není součástí ceny tetování. Slouží ke konzultaci nad vytvořeným
@@ -77,16 +71,26 @@ pricingText: >
   společně upřesníme, jaká je tvá představa.
 
 
-
   V ceně tetování je zahrnuta jedna korekce, která se nevztahuje na místa, na
   která byl klient upozorněn, že se jich korekce netýká a to z důvodu častého
   obnovování kůže a tím pádem vypadávání tetovací barvy (týká se rukou od
   zápěstí - prsty, dlaň, bok ruky, hřbet ruky a chodidel, uši). Korekci tetování
   může klient využít do 3 měsíců od jeho provedení. Tetování je možné opravit
   nejdříve za měsíc po jeho provedení, kdy je již kůže zcela zahojená.
+contactText: >
+  Adresa studia je Zenklova 162/220, Praha 8.
+
+
+  **Autem** můžete parkovat v ulici Pod Hliništěm.
+
+
+  **MHD, nejbližší** zastávka je Okrouhlická - tramvaj, lze dojít i z metra C -
+  Kobylisy, počítejte 8 minut chůze.
+
+
+  V roce 2025/2026 bude možné se objednat na tetování v okolí města Benešov.
 photoText: >
   Momentálně hledám modely a modelky na focení. Portrét, svatba, rodinné focení.
-
 
 
   Budu moc ráda, když napíšete a domluvíme se individuálně, cena je

@@ -59,6 +59,12 @@ export default defineConfig({
           },
           {
             type: "rich-text",
+            name: "contactText",
+            label: "Text o kontaktech",
+            required: true,
+          },
+          {
+            type: "rich-text",
             name: "photoText",
             label: "Text o fotografování",
             required: true,
