@@ -3,10 +3,7 @@ import { client } from '../../tina/__generated__/client'
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
 import Layout from "../layouts/Layout.astro"
 import FileLink from '../components/FileLink.astro'
-import { getPosts } from '../api.js';
 
-const posts = await getPosts(Astro.request);
-const postImages = posts.data?.map(post => post.media_url).filter(post => !post.includes('video')).slice(0, 12);
 const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 ---
 
@@ -60,11 +57,36 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		<div class="content">
 			<h2 class="title">Tetování</h2>
 			<div class="tattooGallery">
-				{postImages?.map((src) => (
-					<a class="glightbox" href={src}>
-						<img class="tattooImage" src={src} alt="Tetování" />
-					</a>
-				))}
+				<a class="glightbox" href="/gallery-01.jpeg">
+					<img class="tattooImage" src="/gallery-01.jpeg" alt="Tetování 01" />
+				</a>
+				<a class="glightbox" href="/gallery-02.jpeg">
+					<img class="tattooImage" src="/gallery-02.jpeg" alt="Tetování 02" />
+				</a>
+				<a class="glightbox" href="/gallery-03.jpeg">
+					<img class="tattooImage" src="/gallery-03.jpeg" alt="Tetování 03" />
+				</a>
+				<a class="glightbox" href="/gallery-05.jpeg">
+					<img class="tattooImage" src="/gallery-04.jpeg" alt="Tetování 04" />
+				</a>
+				<a class="glightbox" href="/gallery-05.jpeg">
+					<img class="tattooImage" src="/gallery-05.jpeg" alt="Tetování 05" />
+				</a>
+				<a class="glightbox" href="/gallery-06.jpeg">
+					<img class="tattooImage" src="/gallery-06.jpeg" alt="Tetování 06" />
+				</a>
+				<a class="glightbox" href="/gallery-07.jpeg">
+					<img class="tattooImage" src="/gallery-07.jpeg" alt="Tetování 07" />
+				</a>
+				<a class="glightbox" href="/gallery-08.jpeg">
+					<img class="tattooImage" src="/gallery-08.jpeg" alt="Tetování 08" />
+				</a>
+				<a class="glightbox" href="/gallery-09.jpeg">
+					<img class="tattooImage" src="/gallery-09.jpeg" alt="Tetování 09" />
+				</a>
+				<a class="glightbox" href="/gallery-10.jpeg">
+					<img class="tattooImage" src="/gallery-10.jpeg" alt="Tetování 10" />
+				</a>
 			</div>
 		</div>
 	</section>
@@ -115,7 +137,10 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			<h2 class="title">FAQ</h2>
 			{data.data.homepage.faq?.map((faq) => (
 				<div class="faqItem">
-					<h3 class="faqQuestion">{faq.question}</h3>
+					<h3 class="faqQuestion">
+						<svg class="faqArrow" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 32 32"><path fill="none" d="M0 0h32v32H0z"/><path fill="var(--arrow-fill)" d="M30 22 16.001 8l-14 14z"/></svg>
+						{faq.question}
+					</h3>
 					<div class="faqAnswer">
 						<TinaMarkdown content={faq.answer} />
 					</div>
@@ -249,14 +274,14 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 
 	.tattooGallery {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(5, 1fr);
 		margin: 0 -30px;
 	}
 
 	.tattooImage {
 		display: block;
 		width: 100%;
-		height: 300px;
+		height: 100%;
 		object-fit: cover;
 	}
 
@@ -276,38 +301,6 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		gap: 20px;
 	}
 
-	.faqQuestion {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		border: 1px solid var(--main-color);
-		padding: 10px 20px;
-		font-size: 16px;
-		font-weight: 400;
-		transition: background-color .3s;
-		cursor: pointer;
-
-		&:hover {
-			background-color: var(--main-color);
-			color: white;
-
-			&::before {
-				border-color: white transparent transparent transparent;
-			}
-		}
-
-		&::before {
-			content: '';
-			width: 0;
-			height: 0;
-			border-style: solid;
-			border-width: 14px 8px 0 8px;
-			border-color: var(--main-color) transparent transparent transparent;
-			transform: rotate(270deg);
-			transition: border-color .3s, transform .3s;
-		}
-	}
-
 	.faqItem + .faqItem {
 		margin-top: -1px;
 	}
@@ -317,17 +310,37 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		color: white;
 	}
 
-	.faqItem.open .faqQuestion::before {
-		border-color: white transparent transparent transparent;
-		transform: rotate(0);
+	.faqItem {
+		--arrow-fill: var(--main-color);
+	}
+
+	.faqItem:hover .faqArrow,
+	.faqItem.open {
+		--arrow-fill: #fff;
+	}
+
+	.faqItem.open .faqArrow {
+		transform: rotate(180deg);
 	}
 
 	.faqItem.open .faqAnswer {
-		max-height: 1000px;
-		opacity: 1;
-		pointer-events: auto;
+		display: block;
+		height: auto;
 		border: 1px solid var(--main-color);
 		padding: 10px 20px;
+		transition: height 0.3s ease;
+	}
+
+	.faqAnswer {
+		display: block;
+		height: 0;
+		overflow: hidden;
+		padding: 0 20px;
+		transition: height 0.3s ease, padding 0.3s ease;
+
+		* {
+			font-size: 16px;
+		}
 	}
 
 	.faqQuestion {
@@ -335,38 +348,23 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		align-items: center;
 		gap: 10px;
 		border: 1px solid var(--main-color);
-		padding: 10px 20px;
+		padding: 10px 15px 10px;
 		font-size: 16px;
 		font-weight: 400;
 		transition: background-color .3s;
 		cursor: pointer;
 	}
 
+	.faqArrow {
+		transition: transform .3s;
+		transform: rotate(90deg);
+		width: 20px;
+		height: 20px;
+	}
+
 	.faqQuestion:hover {
 		background-color: var(--main-color);
 		color: white;
-	}
-
-	.faqQuestion:hover::before {
-		border-color: white transparent transparent transparent;
-	}
-
-	.faqQuestion::before {
-		content: '';
-		width: 0;
-		height: 0;
-		border-style: solid;
-		border-width: 14px 8px 0 8px;
-		border-color: var(--main-color) transparent transparent transparent;
-		transform: rotate(270deg);
-		transition: border-color .3s, transform .3s;
-	}
-
-	.faqAnswer {
-		max-height: 0;
-		opacity: 0;
-		overflow: hidden;
-		transition: max-height 0.3s linear, opacity 0.3s linear;
 	}
 
 	.button {
@@ -485,6 +483,16 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		faqQuestions.forEach(question => {
 			question.addEventListener('click', () => {
 				const faqItem = question.closest('.faqItem');
+				const faqAnswer = faqItem.querySelector('.faqAnswer');
+
+				if (faqItem.classList.contains('open')) {
+					faqAnswer.style.height = '0';
+					faqAnswer.style.padding = '0 20px';
+				} else {
+					faqAnswer.style.height = faqAnswer.scrollHeight + 20 + 'px';
+					faqAnswer.style.padding = '10px 20px';
+				}
+
 				faqItem.classList.toggle('open');
 			});
 		});
