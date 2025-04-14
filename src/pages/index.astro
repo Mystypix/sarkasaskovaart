@@ -66,7 +66,7 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 				<a class="glightbox" href="/gallery-03.jpeg">
 					<img class="tattooImage" src="/gallery-03.jpeg" alt="Tetování 03" />
 				</a>
-				<a class="glightbox" href="/gallery-05.jpeg">
+				<a class="glightbox" href="/gallery-04.jpeg">
 					<img class="tattooImage" src="/gallery-04.jpeg" alt="Tetování 04" />
 				</a>
 				<a class="glightbox" href="/gallery-05.jpeg">
@@ -86,6 +86,21 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 				</a>
 				<a class="glightbox" href="/gallery-10.jpeg">
 					<img class="tattooImage" src="/gallery-10.jpeg" alt="Tetování 10" />
+				</a>
+				<a class="glightbox" href="/gallery-11.jpeg">
+					<img class="tattooImage" src="/gallery-11.jpeg" alt="Tetování 11" />
+				</a>
+				<a class="glightbox" href="/gallery-12.jpeg">
+					<img class="tattooImage" src="/gallery-12.jpeg" alt="Tetování 12" />
+				</a>
+				<a class="glightbox" href="/gallery-13.jpeg">
+					<img class="tattooImage" src="/gallery-13.jpeg" alt="Tetování 13" />
+				</a>
+				<a class="glightbox" href="/gallery-14.jpeg">
+					<img class="tattooImage" src="/gallery-14.jpeg" alt="Tetování 14" />
+				</a>
+				<a class="glightbox" href="/gallery-15.jpeg">
+					<img class="tattooImage" src="/gallery-15.jpeg" alt="Tetování 15" />
 				</a>
 			</div>
 		</div>
@@ -116,6 +131,34 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 			<TinaMarkdown content={data.data.homepage.paintingText} />
 		</div>
 		<div class="sectionBackground paintingBackground"></div>
+	</section>
+	<section class="section section--paintingGallery">
+		<div class="content">
+			<h2 class="title">Galerie obrazů</h2>
+			<div class="paintingGallery">
+				<a class="glightbox" href="/obraz-01.jpeg">
+					<img class="tattooImage" src="/obraz-01.jpeg" alt="Obraz 01" />
+				</a>
+				<a class="glightbox" href="/obraz-02.jpeg">
+					<img class="tattooImage" src="/obraz-02.jpeg" alt="Obraz 02" />
+				</a>
+				<a class="glightbox" href="/obraz-03.jpeg">
+					<img class="tattooImage" src="/obraz-03.jpeg" alt="Obraz 03" />
+				</a>
+				<a class="glightbox" href="/obraz-05.jpeg">
+					<img class="tattooImage" src="/obraz-04.jpeg" alt="Obraz 04" />
+				</a>
+				<a class="glightbox" href="/obraz-05.jpeg">
+					<img class="tattooImage" src="/obraz-05.jpeg" alt="Obraz 05" />
+				</a>
+				<a class="glightbox" href="/obraz-06.jpeg">
+					<img class="tattooImage" src="/obraz-06.jpeg" alt="Obraz 06" />
+				</a>
+			</div>
+			<div class="paintingInfo">
+				Tyto obrazy jsou malované akvarelem a můžeš si o ten svůj napsat na <a href="mailto:sarka.sskv@gmail.com">sarka.sskv@gmail.com</a>. Cena obrazu je 1500Kč.
+			</div>
+		</div>
 	</section>
 	<div id="therms" class="sectionAnchor"></div>
 	<section class="section section--therms">
@@ -237,7 +280,8 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		background-size: cover;
 	}
 
-	.section--tattoo {
+	.section--tattoo,
+	.section--paintingGallery {
 		display: block;
 
 		.content {
@@ -275,6 +319,12 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 	.tattooGallery {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
+		margin: 0 -30px;
+	}
+
+	.paintingGallery {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
 		margin: 0 -30px;
 	}
 
@@ -407,6 +457,11 @@ const data = await client.queries.homepage({ relativePath: 'homepage.md' })
 		&:hover {
 			transform: scale(1.1);
 		}
+	}
+
+	.paintingInfo {
+		padding: 30px 0 60px;
+		text-align: center;
 	}
 
 	@media screen and (max-width: 980px) {
