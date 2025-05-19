@@ -1,17 +1,19 @@
 <nav class="nav">
-    <a class="logo" href="./"><img alt="Logo" class="logoImg" src="/logo.png" /></a>
-    <div class="toggleMenu">
-        <input id="hamburgerInput" type="checkbox" />
-        <div class="hamburger"></div>
-        <div class="navLinks">
-            <a class="navLink" href="#aboutMe">O mně</a>
-            <a class="navLink" href="#pricing">Ceník</a>
-            <a class="navLink" href="#tattoo">Tetování</a>
-            <a class="navLink" href="#reservation">Rezervace</a>
-            <a class="navLink" href="#photography">Fotografie</a>
-            <a class="navLink" href="#painting">Obrazy</a>
-            <a class="navLink" href="#therms">Podmínky</a>
-            <a class="navLink" href="#faq">FAQ</a>
+    <div class="container">
+        <a class="logo" href="./"><img alt="Logo" class="logoImg" src="/logo.png" /></a>
+        <div class="toggleMenu">
+            <input id="hamburgerInput" type="checkbox" />
+            <div class="hamburger"></div>
+            <div class="navLinks">
+                <a class="navLink" href="#aboutMe">O mně</a>
+                <a class="navLink" href="#pricing">Ceník</a>
+                <a class="navLink" href="#tattoo">Tetování</a>
+                <a class="navLink" href="#reservation">Rezervace</a>
+                <a class="navLink" href="#photography">Fotografie</a>
+                <a class="navLink" href="#painting">Obrazy</a>
+                <a class="navLink" href="#therms">Podmínky</a>
+                <a class="navLink" href="#faq">FAQ</a>
+            </div>
         </div>
     </div>
 </nav>
@@ -33,12 +35,15 @@
         left: 0;
         right: 0;
         z-index: 2;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         padding: 5px 30px;
         background-color: rgba(255, 255, 255, 0.6);
         transition: background-color .3s, box-shadow .3s;
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
         &.scrolled {
             background-color: rgba(255, 255, 255, 1);
